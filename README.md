@@ -1,2 +1,2 @@
 # my-store
-Proyecto para certificación en NODEjs, incluye uso de lintern, boom, etc.
+Proyecto para certificación en NODEjs, incluye uso de Eslint, boom, faker, joi, cors.

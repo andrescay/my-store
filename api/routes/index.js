@@ -5,6 +5,9 @@ const express = require('express')
 
 function routerApi(app){
   const router = express.Router()
+  app.get('/api', (req, res) =>{
+    res.send('Conseguido mi primer despliegue!!!')
+  })
   app.use('/api/v1', router) // Uso esta url base
   router.use('/products', productsRouter)
   router.use('/users', usersRouter)

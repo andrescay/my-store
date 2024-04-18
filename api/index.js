@@ -13,7 +13,7 @@ app.use(express.json()) // Middleware para utilizar JSON
 const whiteList = ['http://localhost:8080','htttps://myapp.co']
 const options ={
   origin: (origin, callback) =>{
-    if(whiteList.includes(origin || !origin)){
+    if(whiteList.includes(origin) || !origin){
       callback(null,true)
     }
     else{

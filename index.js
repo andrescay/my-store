@@ -2,16 +2,18 @@ const express = require("express")
 const cors = require('cors')
 const routerApi = require('./routes')
 const {logErrors, errorHandler, boomErrorHandler} = require('./middlewares/error.handler')
-
 const app = express()
-const port = 3000
+require('dotenv').config({path:'./.env'});
+
+// eslint-disable-next-line no-undef
+const port = process.env.PORT || 3000
 
 app.use(express.json()) // Middleware para utilizar JSON
 
 const whiteList = ['http://localhost:8080','htttps://myapp.co']
 const options ={
   origin: (origin, callback) =>{
-    if(whiteList.includes(origin)){
+    if(whiteList.includes(origin || !origin)){
       callback(null,true)
     }
     else{

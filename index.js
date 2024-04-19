@@ -3,10 +3,9 @@ const cors = require('cors')
 const routerApi = require('./routes')
 const {logErrors, errorHandler, boomErrorHandler} = require('./middlewares/error.handler')
 const app = express()
-require('dotenv').config({path:'./.env'});
 
 // eslint-disable-next-line no-undef
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 2500
 
 app.use(express.json()) // Middleware para utilizar JSON
 

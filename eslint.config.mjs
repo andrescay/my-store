@@ -10,6 +10,6 @@ export default [
   "no-console":["warn", { allow: ["warn", "error"] }] // Advierte cuando se utiliza console.log()
 }
 },
-  {languageOptions: { globals: globals.browser }},
+  {languageOptions: { globals: globals.node }},
   pluginJs.configs.recommended,
 ];

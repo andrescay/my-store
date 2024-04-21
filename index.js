@@ -1,10 +1,9 @@
 const express = require("express")
 const cors = require('cors')
 const routerApi = require('./routes')
-const {logErrors, errorHandler, boomErrorHandler} = require('./middlewares/error.handler')
+const {logErrors, errorHandler, boomErrorHandler, ormErrorHandler} = require('./middlewares/error.handler')
 const app = express()
 
-// eslint-disable-next-line no-undef
 const port = process.env.PORT || 2500
 
 app.use(express.json()) // Middleware para utilizar JSON
@@ -25,6 +24,7 @@ app.use(cors(options)) // Permite recibir solicitudes que provengan desde un sit
 
 routerApi(app) // Routing
 app.use(logErrors) // Middleware para imprimir error
+app.use(ormErrorHandler) // Middleware para manejar errores de sequelize
 app.use(boomErrorHandler) // Middleware para manejar error utilizando boom
 app.use(errorHandler) // Middleware para manejar error
 

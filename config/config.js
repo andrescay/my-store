@@ -8,4 +8,4 @@ const config = {
   dbPort: process.env.DB_PORT ,
 }
 
-module.exports = config
+module.exports = {config}

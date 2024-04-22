@@ -1,6 +1,4 @@
-const { Sequelize} = require('sequelize')
 const {config} = require('./../config/config')
-const setupModels = require('./../db/models')
 
 const PASSWORD = encodeURIComponent(config.dbPassword);
 const HOST = encodeURIComponent(config.dbHost);
@@ -18,14 +16,13 @@ else{
   URL = `mysql://${USER}:${PASSWORD}@${HOST}:${PORT}/${DATABASE}`
 }
 
-// Es una buena práctica conectarse a partir de una url de conexión
-const sequelize = new Sequelize(URL,{
-  dialect: config.dbSystem,
-  logging: true,
-})
-
-setupModels(sequelize)
-
-// sequelize.sync() // Sincroniza tablas, en caso de tener que crear tablas lo hace, sinm embargo esto es una MALA PRÁCTICA, lo correcto es utilizar migraciones
-
-module.exports = sequelize
+module.exports = {
+  development: {
+    url: URL,
+    dialect: config.dbSystem
+  },
+  production: {
+    url: URL,
+    dialect: config.dbSystem
+  }
+}

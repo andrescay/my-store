@@ -36,8 +36,8 @@ const customerSchema = {
   },
   createdAt: {
     field: 'create_at',
-    allowNull: false,
     type: DataTypes.DATE,
+    allowNull: false,
     defaultValue: Sequelize.NOW
   }
 }
@@ -45,6 +45,11 @@ const customerSchema = {
 class Customer extends Model{
   static associate(models){
     this.belongsTo(models.User,{as: 'user'})
+    this.hasMany(models.Order,{
+      as: 'order',
+      foreignKey: 'customerId'
+    })
+
   }
 
   static config(sequelize){

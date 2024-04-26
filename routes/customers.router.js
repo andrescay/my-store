@@ -1,4 +1,4 @@
-const express = require ("express")
+const express = require ('express')
 const customerService = require('../services/customer.service')
 const validatorHandler = require('../middlewares/validator.handler')
 const {createCustomerSchema, updateCustomerSchema, getCustomerSchema} = require('../schemas/customer.schema')

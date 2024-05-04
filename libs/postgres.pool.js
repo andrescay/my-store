@@ -10,7 +10,7 @@ const PORT = encodeURIComponent(config.dbPort);
 const DATABASE = encodeURIComponent(config.dbName);
 
 
-// También es una bnuena práctica conectarse a partir de una url de conexión
+// También es una buena práctica conectarse a partir de una url de conexión
 const URL = `postgres://${USER}:${PASSWORD}@${HOST}:${PORT}/${DATABASE}`;
 
 const pool = new Pool({

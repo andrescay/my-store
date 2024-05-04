@@ -1,4 +1,5 @@
 const { Model, DataTypes, Sequelize} = require('sequelize')
+const bcrypt = require('bcrypt')
 
 const USER_TABLE = 'users'
 
@@ -43,7 +44,14 @@ class User extends Model {
       sequelize,
       tableName: USER_TABLE,
       modelName: 'User',
-      timestamps: false // Creación de campos por defecto
+      timestamps: false, // Creación de campos por defecto
+      hooks: {
+        // eslint-disable-next-line no-unused-vars
+        beforeCreate: async (user, _ptions) => {
+          const password = await bcrypt.hash(user.password, 10)
+          user.password = password
+        },
+      }
     }
   }
 }

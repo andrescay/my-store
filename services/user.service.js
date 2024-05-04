@@ -1,6 +1,7 @@
 
 const { models } = require('./../libs/sequelize')
 const boom = require('@hapi/boom')
+
 class userService {
   constructor(){}
 
@@ -12,8 +13,16 @@ class userService {
     return user
   }
 
+  async findByEmail(email){
+    const user = await models.User.findOne({
+      where: {email}
+    })
+    return user
+  }
+
   async create(data){
-    const newUser = await models.User.create(data)
+    const newUser = await models.User.create(data);
+    delete newUser.dataValues.password
     return newUser
   }
 

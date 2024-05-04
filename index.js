@@ -22,6 +22,8 @@ const options ={
 app.use(cors(options)) // Permite recibir solicitudes que provengan desde un sitio de la whitelist
 // app.use(cors()) // Permite recibir solicitudes desde cualquier origen
 
+require('./utils/auth')
+
 routerApi(app) // Routing
 app.use(logErrors) // Middleware para imprimir error
 app.use(ormErrorHandler) // Middleware para manejar errores de sequelize

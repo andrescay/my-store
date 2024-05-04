@@ -37,7 +37,7 @@ const queryProductSchema = Joi.object({
   offset,
   categoryId,
   price_min,
-  price_max: price_max.when('price_min', { is: Joi.exist(), then: Joi.required()})
+  price_max: price_max.when('price_min', { is: Joi.exist(), then: Joi.required()}) // Hacerlo obligatorio si esta el param price_min
 })
 
 module.exports = {createProductSchema, updateProductSchema, getProductSchema, queryProductSchema}

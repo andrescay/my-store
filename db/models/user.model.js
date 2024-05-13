@@ -19,6 +19,11 @@ const userSchema = {
     allowNull: false,
     type: DataTypes.STRING
   },
+  recoveryToken: {
+    field: 'recovery_token',
+    allowNull: true,
+    type: DataTypes.STRING
+  },
   role: {
     allowNull: false,
     type: DataTypes.STRING,
@@ -47,7 +52,7 @@ class User extends Model {
       timestamps: false, // Creación de campos por defecto
       hooks: {
         // eslint-disable-next-line no-unused-vars
-        beforeCreate: async (user, _ptions) => {
+        beforeCreate: async (user, options) => {
           const password = await bcrypt.hash(user.password, 10)
           user.password = password
         },

@@ -2,7 +2,7 @@
 const { models } = require('./../libs/sequelize')
 const boom = require('@hapi/boom')
 
-class userService {
+class UserService {
   constructor(){}
 
   async findOne(id){
@@ -46,4 +46,4 @@ class userService {
   }
 }
 
-module.exports = userService
+module.exports = UserService
